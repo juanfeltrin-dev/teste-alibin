@@ -4,7 +4,6 @@ namespace Sdk\Request;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
 
 abstract class AbstractRequest
 {
@@ -12,18 +11,23 @@ abstract class AbstractRequest
 
     /**
      * @param array $params
-     *
      * @return mixed
      */
     protected abstract function execute(array $params);
 
     /**
      * @param $json
-     *
      * @return mixed
      */
     protected abstract function unserialize($json);
 
+    /**
+     * @param $method
+     * @param $url
+     * @param array $params
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function send($method, $url, array $params = [])
     {
         try {

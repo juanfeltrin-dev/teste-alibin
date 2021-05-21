@@ -5,12 +5,13 @@ namespace Sdk\Request;
 
 
 use Sdk\Entity\Venda;
-use Dotenv\Dotenv;
 
 class QueryVenda extends AbstractRequest
 {
     /**
+     * @param array $params
      * @return Venda[]
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function execute(array $params = [])
     {
