@@ -3,8 +3,8 @@
 
 namespace Tests;
 
-use App\Entity\Venda;
-use App\Request\QueryVenda;
+use Sdk\Entity\Venda;
+use Sdk\Request\QueryVenda;
 use PHPUnit\Framework\TestCase;
 
 class VendaTest extends TestCase

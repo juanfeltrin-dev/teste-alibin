@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Request;
+namespace Sdk\Request;
 
 
-use App\Entity\Venda;
+use Sdk\Entity\Venda;
 use Dotenv\Dotenv;
 
 class QueryVenda extends AbstractRequest
