@@ -3,8 +3,8 @@
     "description": "teste back end alibin",
     "type": "library",
     "require": {
-        "laravel/framework": "7.0",
-        "guzzlehttp/guzzle": "^7.3"
+        "laravel/framework": "^7.0.0",
+        "guzzlehttp/guzzle": "^7.3.0"
     },
     "authors": [
         {
