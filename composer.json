@@ -3,9 +3,7 @@
     "description": "teste back end alibin",
     "type": "library",
     "require": {
-        "laravel/framework": "^7.0.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/lumen-framework": "^7.0.0"
+        "guzzlehttp/guzzle": "^7.0.1"
     },
     "authors": [
         {
