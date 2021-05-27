@@ -4,10 +4,16 @@
 namespace Sdk\Request;
 
 
+use Sdk\Credential;
 use Sdk\Entity\Venda;
 
 class QueryVenda extends AbstractRequest
 {
+    public function __construct(Credential $credential)
+    {
+        parent::__construct($credential);
+    }
+
     /**
      * @param array $params
      * @return Venda[]

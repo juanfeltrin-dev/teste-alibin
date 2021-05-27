@@ -3,33 +3,48 @@
 
 namespace Tests;
 
+use GuzzleHttp\Exception\ClientException;
 use Sdk\Entity\Venda;
-use Sdk\Request\QueryVenda;
 use PHPUnit\Framework\TestCase;
 
 class VendaTest extends TestCase
 {
     public function testApiVendaSemFiltro()
     {
-        $queryVenda = new QueryVenda();
+        $credential = new \Sdk\Credential(
+            'FC-SB-15',
+            '6ea297bc5e294666f6738e1d48fa63d2'
+        );
 
-        $this->assertTrue(!empty($queryVenda->execute()));
+        $fPay = new \Sdk\Fpay($credential);
+
+        $this->assertTrue(!empty($fPay->getVendas()));
     }
 
     public function testApiVendaComFiltro()
     {
-        $queryVenda = new QueryVenda();
+        $credential = new \Sdk\Credential(
+            'FC-SB-15',
+            '6ea297bc5e294666f6738e1d48fa63d2'
+        );
 
-        $this->assertTrue(!empty($queryVenda->execute(['nu_referencia' => 1621533476])));
+        $fPay = new \Sdk\Fpay($credential);
+
+        $this->assertTrue(!empty($fPay->getVendas(['nu_referencia' => 1621533476])));
     }
 
     public function testApiVendaComFiltroErrado()
     {
-        $queryVenda = new QueryVenda();
+        $credential = new \Sdk\Credential(
+            'FC-SB-15',
+            '6ea297bc5e294666f6738e1d48fa63d2'
+        );
+
+        $fPay = new \Sdk\Fpay($credential);
 
         $this->expectException(\Exception::class);
 
-        $queryVenda->execute(['nu_referencia' => 'dsfsdfsdfsfddfssdfsdfsdfdfssdf']);
+        $fPay->getVendas(['nu_referencia' => 'dsfsdfsdfsfddfssdfsdfsdfdfssdf']);
     }
 
     public function testConvercaoJsonParaArray()
@@ -49,5 +64,19 @@ class VendaTest extends TestCase
         $venda = new Venda();
 
         $this->assertTrue($venda->populate($json) instanceof Venda);
+    }
+
+    public function testCredencialIncorreta()
+    {
+        $credential = new \Sdk\Credential(
+            'teste',
+            'teste'
+        );
+
+        $fPay = new \Sdk\Fpay($credential);
+
+        $this->expectException(ClientException::class);
+
+        $fPay->getVendas();
     }
 }

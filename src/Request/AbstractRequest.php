@@ -4,10 +4,21 @@ namespace Sdk\Request;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use Sdk\Credential;
 
 abstract class AbstractRequest
 {
     const METHOD_GET = 'GET';
+
+    /**
+     * @var Credential
+     */
+    private $credential;
+
+    public function __construct(Credential $credential)
+    {
+        $this->credential = $credential;
+    }
 
     /**
      * @param array $params
@@ -36,8 +47,8 @@ abstract class AbstractRequest
             $response = $client->request($method, $url, [
                 'headers' => [
                     'Content-Type'  => 'application/json',
-                    'Client-Code'   => 'FC-SB-15',
-                    'Client-key'    => '6ea297bc5e294666f6738e1d48fa63d2'
+                    'Client-Code'   => $this->credential->getClientCode(),
+                    'Client-key'    => $this->credential->getClientKey()
                 ],
                 'query' => $params
             ]);
