@@ -1,5 +1,8 @@
 # Teste Alibin
 
+## Instalamento via Composer
+`composer require alibin/sdk-fpay`
+
 ## Chamar o método
 ```php
 <?php
@@ -15,7 +18,7 @@
     $fPay->getVendas();
 ```
 
-## Método execute() aceita um parametro array, que seria os filtros encontrados na [documentação da API](https://docs.fpay.me/#249214b0-0d74-4bfa-a070-fc2b50d0aa21).
+## Método getVendas() aceita um parametro array, que seria os filtros encontrados na [documentação da API](https://docs.fpay.me/#249214b0-0d74-4bfa-a070-fc2b50d0aa21).
 ```php
 <?php
     require 'vendor/autoload.php';
